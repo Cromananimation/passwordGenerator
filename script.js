@@ -1,34 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
-        </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div class="card-footer">
-          <button id="generate" class="btn" onclick="myPasswordGenerator.writePassword()">Generate Password</button>
-        </div>
-      </div>
-    </div>
-    <script src="script.js"></script>
-  </body>
-</html>
+myPasswordGenerator = {
+    //check it meets criteria 
+    bUpperCase: false,
+    bLowerCase: false,
+    bSymbols: false,
+    bNumbers: false,
+    bHasUpper: false,
+    bHasLower: false,
+    bHasSymbols: false,
+    bHasNumbers: false,
+    passwordLength: "",
+    letters: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+    numbers: ["0","1","2","3","4","5","6","7","8","9"],
+    symbols: ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", "|", ":", ";", "'", "<", ",", ">", ".", "?", "/", '\\'],
+    possibleCharacters: [],
+    password: "",
+    writePassword: function () {
+      this.password = ""
+      bExceededRange = true 
+      while (bExceededRange){
+        this.passwordLength = prompt("How long will your password be? Choose a numbers from 8 to 128")
+        if ((this.passwordLength > 128) || (this.passwordLength < 8)){
+          alert("Try Again!")
+        }
+        else {
+          bExceededRange = false
+        }
+      }
+      bSettingOption = true
+      while (bSettingOption) {
+        this.bLowerCase = confirm("Will you want lower case letters?")
+        this.bUpperCase = confirm("Will you want upper case letters?")
+        this.bNumbers = confirm("Will you want numbers?")
+        this.bSymbols = confirm("Will you want symbols?")
+        if ((this.bLowerCase) || (this.bUpperCase) || (this.bNumbers) || (this.bSymbols)){
+          bSettingOption = false
+        }
+        else{
+          alert("Please select one option")
+        }
+      } 
+      if (this.bUpperCase || this.bLowerCase){
+        this.possibleCharacters = this.possibleCharacters.concat(this.letters)
+      }
+      if (this.bSymbols){
+        this.possibleCharacters = this.possibleCharacters.concat(this.symbols)
+      }
+      if (this.bNumbers){
+        this.possibleCharacters = this.possibleCharacters.concat(this.numbers)
+      }
+      console.log("Possible Characters: " + this.possibleCharacters)
+      console.log(this.passwordLength)
+      for (index = 0; index < this.passwordLength; index++){
+        this.password += this.possibleCharacters[Math.floor((Math.random()*this.possibleCharacters.length))]
+      }
+      document.getElementById("password").value=this.password
+    }
+}
+
+
+// thisCondition = true
+// while(thisCondition){
+//   // do the code
+//   if (conditionmet){
+//     thisCondition = false
+//   }
+// }
+
