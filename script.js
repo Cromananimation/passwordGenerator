@@ -14,6 +14,7 @@ myPasswordGenerator = {
     symbols: ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", "|", ":", ";", "'", "<", ",", ">", ".", "?", "/", '\\'],
     possibleCharacters: [],
     password: "",
+    /* set charectors*/
     writePassword: function () {
       this.password = ""
       bExceededRange = true 
@@ -25,6 +26,7 @@ myPasswordGenerator = {
         else {
           bExceededRange = false
         }
+        /* wrote out set password length*/
       }
       bSettingOption = true
       while (bSettingOption) {
@@ -35,9 +37,12 @@ myPasswordGenerator = {
         if ((this.bLowerCase) || (this.bUpperCase) || (this.bNumbers) || (this.bSymbols)){
           bSettingOption = false
         }
+        /* wrote out boolean statement for yes and no on prompt*/
+        /* fixed parenthases*/
         else{
-          alert("Please select one option")
+          alert("Please select one option butter fingers")
         }
+        /* alert set*/
       } 
       if (this.bUpperCase || this.bLowerCase){
         this.possibleCharacters = this.possibleCharacters.concat(this.letters)
@@ -48,6 +53,7 @@ myPasswordGenerator = {
       if (this.bNumbers){
         this.possibleCharacters = this.possibleCharacters.concat(this.numbers)
       }
+      /*if and else statements needed for letters, symbols, numbers*/
       console.log("Possible Characters: " + this.possibleCharacters)
       console.log(this.passwordLength)
       for (index = 0; index < this.passwordLength; index++){
