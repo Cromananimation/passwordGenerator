@@ -22,6 +22,7 @@ myPasswordGenerator = {
         this.passwordLength = prompt("How long will your password be? Choose a numbers from 8 to 128")
         if ((this.passwordLength > 128) || (this.passwordLength < 8)){
           alert("Try Again!")
+          /*set alert phrase*/
         }
         else {
           bExceededRange = false
@@ -37,6 +38,7 @@ myPasswordGenerator = {
         if ((this.bLowerCase) || (this.bUpperCase) || (this.bNumbers) || (this.bSymbols)){
           bSettingOption = false
         }
+        /* wrote out statements*/
         /* wrote out boolean statement for yes and no on prompt*/
         /* fixed parenthases*/
         else{
