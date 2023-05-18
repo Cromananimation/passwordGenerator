@@ -14,20 +14,18 @@ myPasswordGenerator = {
   symbols: ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", "|", ":", ";", "'", "<", ",", ">", ".", "?", "/", '\\'],
   possibleCharacters: [],
   password: "",
+  failureResponses: [alert("Try Again!") || alert("Nope! try again!") || alert("Whooopsii!! invaid entry!")],
   /* set charectors*/
+  /* set  other kid of random responsive alerts */
   writePassword: function () {
     this.password = ""
     bExceededRange = true
     while (bExceededRange) {
       this.passwordLength = prompt("How long will your password be? Choose a numbers from 8 to 128")
-      if ((this.passwordLength > 128) || (this.passwordLength < 8)) {
-        alert("Try Again!")
+      if ((this.passwordLength > 128) || (this.passwordLength < 8) || (this.possibleCharacters) || (this.symbols) || (this.numbers)) { 
       }
       else {
-
-        bExceededRange = false
-      }
-
+        /*bExceededRange = false*/
     }
     bSettingOption = true
     while (bSettingOption) {
@@ -65,13 +63,4 @@ myPasswordGenerator = {
     document.getElementById("password").value = this.password
   }
 }
-console.log(myPasswordGenerator)
-
-
-// thisCondition = true
-// while(thisCondition){
-//   if (conditionmet){
-//     thisCondition = false
-//   }
-// }
-
+}
