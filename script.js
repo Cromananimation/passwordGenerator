@@ -1,4 +1,5 @@
 //check it meets criteria 
+
 myPasswordGenerator = {
   bUpperCase: false,
   bLowerCase: false,
@@ -72,6 +73,7 @@ myPasswordGenerator = {
     }
     document.getElementById("password").value = this.password
     console.log(this.password)
+    
   }
 }
 }
