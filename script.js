@@ -14,36 +14,39 @@ myPasswordGenerator = {
   symbols: ["~", "`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "-", "+", "=", "{", "[", "}", "]", "|", ":", ";", "'", "<", ",", ">", ".", "?", "/", '\\'],
   possibleCharacters: [],
   password: "",
-  failureResponses: [alert("Try Again!") || alert("Nope! try again!") || alert("Whooopsii!! invaid entry!")],
+  failureResponses: [("Try Again!"),("Nope! try again!"),("Whooopsii!! invaid entry!")],
   /* set charectors*/
   /* set  other kid of random responsive alerts */
-  writePassword: function () {
+  writePassword: function() {
     this.password = ""
     bExceededRange = true
     while (bExceededRange) {
       this.passwordLength = prompt("How long will your password be? Choose a numbers from 8 to 128")
-      if ((this.passwordLength > 128) || (this.passwordLength < 8) || (this.possibleCharacters) || (this.symbols) || (this.numbers)) { 
+      if ((this.passwordLength > 128) || (this.passwordLength < 8) || (this.symbols.includes(this.passwordLength[0])) || (this.letters.includes(this.passwordLength[0]))) { 
+        alert("cought you slippin make another higher value choice")
       }
       else {
-        /*bExceededRange = false*/
+        bExceededRange = false
     }
+    console.log("Length set successfully")
     bSettingOption = true
+    console.log("Options starting")
     while (bSettingOption) {
       this.bLowerCase = confirm("Will you want lower case letters?")
       this.bUpperCase = confirm("Will you want upper case letters?")
       this.bNumbers = confirm("Will you want numbers?")
       this.bSymbols = confirm("Will you want symbols?")
+      console.log("Evaluating")
       if ((this.bLowerCase) || (this.bUpperCase) || (this.bNumbers) || (this.bSymbols)) {
         bSettingOption = false
+        console.log("Option loop broken")
       }
-      /* wrote out statements*/
-      /* wrote out boolean statement for yes and no on prompt*/
-      /* fixed parenthases*/
       else {
-        alert("Please select one option butter fingers")
+        alert(this.failureResponses[Math.floor((Math.random() * this.failureResponses.length))])
+        console.log("Random Response ran")
       }
-      /* alert set*/
     }
+    console.log("Starting concat of avail chars.")
     if (this.bUpperCase || this.bLowerCase) {
       this.possibleCharacters = this.possibleCharacters.concat(this.letters)
     }
@@ -54,13 +57,16 @@ myPasswordGenerator = {
       this.possibleCharacters = this.possibleCharacters.concat(this.numbers)
     }
     /*if and else statements needed for letters, symbols, numbers*/
-    console.log("Possible Characters: " + this.possibleCharacters)
+    console.log("Possible Characters:" + this.possibleCharacters)
     console.log(this.passwordLength)
-    console.log
+    console.log(this.alert)
+    console.log(this.password)
+    //vvvv This needs to repeat until generated code matches requested criteria vvvv
     for (index = 0; index < this.passwordLength; index++) {
       this.password += this.possibleCharacters[Math.floor((Math.random() * this.possibleCharacters.length))]
     }
     document.getElementById("password").value = this.password
+    console.log(this.password)
   }
 }
 }
