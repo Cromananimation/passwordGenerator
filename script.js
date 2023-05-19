@@ -16,7 +16,7 @@ myPasswordGenerator = {
   password: "",
   failureResponses: [("Try Again!"),("Nope! try again!"),("Whooopsii!! invaid entry!")],
   /* set charectors*/
-  /* set  other kid of random responsive alerts */
+  /* set other kid of random responsive alerts */
   writePassword: function() {
     this.password = ""
     bExceededRange = true
@@ -25,12 +25,14 @@ myPasswordGenerator = {
       if ((this.passwordLength > 128) || (this.passwordLength < 8) || (this.symbols.includes(this.passwordLength[0])) || (this.letters.includes(this.passwordLength[0]))) { 
         alert("cought you slippin make another higher value choice")
       }
+      /* set password length */
       else {
         bExceededRange = false
     }
     console.log("Length set successfully")
     bSettingOption = true
     console.log("Options starting")
+    /*damn console logs*/
     while (bSettingOption) {
       this.bLowerCase = confirm("Will you want lower case letters?")
       this.bUpperCase = confirm("Will you want upper case letters?")
@@ -40,11 +42,13 @@ myPasswordGenerator = {
       if ((this.bLowerCase) || (this.bUpperCase) || (this.bNumbers) || (this.bSymbols)) {
         bSettingOption = false
         console.log("Option loop broken")
+        //broke loop cycle finally
       }
       else {
         alert(this.failureResponses[Math.floor((Math.random() * this.failureResponses.length))])
         console.log("Random Response ran")
       }
+      //alerts randomly made
     }
     console.log("Starting concat of avail chars.")
     if (this.bUpperCase || this.bLowerCase) {
@@ -62,6 +66,7 @@ myPasswordGenerator = {
     console.log(this.alert)
     console.log(this.password)
     //vvvv This needs to repeat until generated code matches requested criteria vvvv
+    //damn console!!! fixed bug i was havingwith 64-67
     for (index = 0; index < this.passwordLength; index++) {
       this.password += this.possibleCharacters[Math.floor((Math.random() * this.possibleCharacters.length))]
     }
@@ -70,3 +75,4 @@ myPasswordGenerator = {
   }
 }
 }
+//should work now
